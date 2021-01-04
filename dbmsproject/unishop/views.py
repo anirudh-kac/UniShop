@@ -2,15 +2,15 @@ from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm , UserProfileForm ,StoreForm ,ProductForm
-from .models import Product , Store , CartItem , Bill
+from .models import Product , Shop , CartItem , Bill
 # Create your views here.
 
 def home(request):
-    return render(request,'shop/index.html')
+    return render(request,'unishop/index.html')
 
 def login_user(request):
     if request.method == "GET":
-        return render(request,'shop/login.html')
+        return render(request,'unishop/login.html')
     else:
         username = request.POST["username"]
         password = request.POST["password"]
@@ -32,7 +32,7 @@ def register_user(request):
     if request.method == "GET":
         user_form = UserForm()
         user_profile_form = UserProfileForm()
-        return render(request,'shop/register.html',{
+        return render(request,'unishop/register.html',{
             "user_form":user_form,
             "user_profile_form":user_profile_form
         })
@@ -70,7 +70,7 @@ def myshop(request):
     if request.method == "GET":
         store_form = StoreForm()
         product_form = ProductForm()
-        return render(request,'shop/myshop.html',{
+        return render(request,'unishop/myshop.html',{
             "store_form" : store_form,
             "product_form" : product_form
         })
@@ -113,14 +113,14 @@ def shops(request):
         shops = Store.objects.all()
 
     
-    return render(request,'shop/shops.html',{
+    return render(request,'unishop/shops.html',{
             "shops":shops
         })
 
 def shop(request,id):
     shop = Store.objects.get(id = id)
 
-    return render(request,"shop/shop.html",{
+    return render(request,"unishop/shop.html",{
         "shop":shop
     })
 
@@ -144,7 +144,7 @@ def cart(request):
         # print(items)
         cart_grouped.append({"store" : store,"items" : items})
     # print(cart_grouped)
-    return render(request,'shop/cart.html',{
+    return render(request,'unishop/cart.html',{
         "cart_items" : cart_grouped
     })
 

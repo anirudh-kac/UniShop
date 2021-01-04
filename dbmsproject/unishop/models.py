@@ -6,11 +6,11 @@ from django.contrib.auth.models import User
 # By default, Django gives each model the following field:
 # id = models.AutoField(primary_key=True)
 
-class Store(models.Model):
+class Shop(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     pincode = models.PositiveIntegerField()
-    owner = models.OneToOneField(User,on_delete=models.CASCADE,related_name="store")
+    owner = models.OneToOneField(User,on_delete=models.CASCADE,related_name="shop")
 
     def __str__(self):
         return self.name
@@ -34,7 +34,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
-    store = models.ForeignKey('Store',on_delete=models.CASCADE)
+    shop = models.ForeignKey('Shop',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.brand + self.name
@@ -52,7 +52,7 @@ class Bill(models.Model):
     address = models.CharField(max_length=100)
     total_price = models.PositiveIntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="bill")
-    store = models.ForeignKey(Store , on_delete=models.Case,related_name="bills")
+    shop = models.ForeignKey('Shop', on_delete=models.Case,related_name="bills")
 
     def __str__(self):
         return self.user.username

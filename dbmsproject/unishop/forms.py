@@ -1,5 +1,5 @@
 from django import forms
-from .models import User , UserProfile , Store ,Product
+from .models import User , UserProfile , Shop ,Product
 
 
 class UserForm(forms.ModelForm):
@@ -18,7 +18,7 @@ class UserProfileForm(forms.ModelForm):
 class StoreForm(forms.ModelForm):
 
     class Meta:
-        model = Store
+        model = Shop
         exclude = ["owner"]
 
 

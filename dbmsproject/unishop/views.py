@@ -19,7 +19,7 @@ def login_user(request):
             login(request,user)
             return redirect('/')
         else:
-            return redirect('/login')
+            return render(request,'unishop/login.html',{"message":"Invalid Credentials. Please try again"})
 
 @login_required
 def logout_user(request):

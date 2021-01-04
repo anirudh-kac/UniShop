@@ -69,19 +69,19 @@ def myshop(request):
         return redirect('/')
 
     if request.method == "GET":
-        store_form = StoreForm()
+        shop_form = ShopForm()
         product_form = ProductForm()
         return render(request,'unishop/myshop.html',{
-            "store_form" : store_form,
+            "shop_form" : shop_form,
             "product_form" : product_form
         })
     
     else:
 
-        store = StoreForm(request.POST)
-        store = store.save(commit=False)
-        store.owner = request.user
-        store.save()
+        shop = ShopForm(request.POST)
+        shop = shop.save(commit=False)
+        shop.owner = request.user
+        shop.save()
         return redirect('/myshop')
 
 @login_required
@@ -102,7 +102,7 @@ def add_product(request):
     if product.is_valid():
 
         product = product.save(commit=False)
-        product.store = request.user.store
+        product.shop = request.user.shop
         product.save()
     return redirect('/myshop')
 
@@ -132,18 +132,18 @@ def cart(request):
     cart_all = cart_items
     cart_grouped = []
     # get current list of shops user is ordering from
-    store_ids = set([item.product.store.id for item in cart_items])
-    for store_id in store_ids:
-        #find store
-        store = Shop.objects.get(id = store_id)
-        #find all items brought from a store
+    shop_ids = set([item.product.shop.id for item in cart_items])
+    for shop_id in shop_ids:
+        #find shop
+        shop = Shop.objects.get(id = shop_id)
+        #find all items brought from a shop
         items = []
         for cart_item in cart_all:
-            if cart_item.product.store.id == store_id:
+            if cart_item.product.shop.id == shop_id:
                 items.append(cart_item)
-        # print(store)
+        # print(shop)
         # print(items)
-        cart_grouped.append({"store" : store,"items" : items})
+        cart_grouped.append({"shop" : shop,"items" : items})
     # print(cart_grouped)
     return render(request,'unishop/cart.html',{
         "cart_items" : cart_grouped
@@ -179,15 +179,23 @@ def order(request):
     print(deliver)
     print(shop_id)
     for item in request.user.cartitem_set.all():
-        print(item.product.store.id)
+        print(item.product.shop.id)
         #only cart items belonging to that shop
-        if item.product.store.id == shop_id:
+        if item.product.shop.id == shop_id:
             print(item)
             price+= item.quantity * item.product.price
             item.delete()
     
     shopped_from = Shop.objects.get(id = shop_id)
-    bill  = Bill(address = address,user=request.user,total_price=price,deliver=deliver,store=shopped_from)
+    bill  = Bill(address = address,user=request.user,total_price=price,deliver=deliver,shop=shopped_from)
     bill.save()
 
     return HttpResponse(f"Order Placed! \n Total price {bill.total_price}")
+
+@login_required
+def shop_orders(request):
+    if not request.user.profile.is_owner:
+        return redirect('/')
+    
+    orders = request.user.shop.bills.objects.all()
+    print(orders)

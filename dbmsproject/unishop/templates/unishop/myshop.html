@@ -5,17 +5,17 @@ Your Shop
 {% endblock title %}
 {% block bodyblock %}
 
-{% if not user.store %}
+{% if not user.shop %}
 <h1>You need to create your shop first</h1>
 
 <form action="/myshop/" method = "POST">
-    {{store_form.as_p}}
+    {{shop_form.as_p}}
     {% csrf_token %}
     <button type = "submit">Create Shop</button>
 </form>
 {% else %}
 <h1>
-{{user.store.name}}
+{{user.shop.name}}
 </h1>
 
 <h2>Products</h2>
@@ -28,7 +28,7 @@ Your Shop
         <th>Quantity</th>
         <th>Delete</th>
     </tr>
-    {% for product in user.store.product_set.all  %}
+    {% for product in user.shop.product_set.all  %}
 
     <tr>
         <td>{{product.id}}</td>

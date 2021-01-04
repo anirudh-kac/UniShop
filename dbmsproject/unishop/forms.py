@@ -19,7 +19,7 @@ class ShopForm(forms.ModelForm):
 
     class Meta:
         model = Shop
-        exclude = ["owner"]
+        exclude = ["owner","image_url"]
 
 
 class ProductForm(forms.ModelForm):

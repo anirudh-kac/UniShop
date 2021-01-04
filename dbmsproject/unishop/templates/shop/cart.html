@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Cart
+{% endblock title %}
+{% block bodyblock %}
+
+    {% if not cart_items %}
+
+        <h2> No items in your cart </h2>
+
+    {% else %}
+
+        <ul>
+            {% for cart_item in cart_items  %}
+            <li>
+            <h3>{{ cart_item.store }}</h3>
+                <ul>
+                    {% for item  in cart_item.items %}
+                    <p>{{item.product.name}} {{item.quantity}} </p>
+                    {% endfor %}
+                </ul>
+
+                <form method = "POST" action="/order/">
+                    {% csrf_token %}
+                    <label for="deliver">Deliver</label>
+                    <input  name = "deliver" id = "deliver" type="checkbox">
+                    <input type = "hidden" name = "shop_id" value = "{{cart_item.store.id}}">
+                    <button type = "submit" >Order</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+       
+        
+    {% endif %}
+{% endblock bodyblock %}
+    

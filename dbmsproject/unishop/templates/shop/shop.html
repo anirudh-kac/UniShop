@@ -1,0 +1,41 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+{{shop.name}}
+{% endblock title %}
+{% block bodyblock %}
+
+<h1> {{shop.name}} </h1>
+
+{% if not shop.product_set.all %}
+<h3>Sorry this shop doesnt have any items available</h3>
+{% else %}
+
+<h2>Products</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Add to cart</th>
+    </tr>
+    {% for product in shop.product_set.all  %}
+
+    <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.brand}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td><a href = "/product/addtocart/{{product.id}}" >+</a></td>
+    </tr>
+        
+{% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock bodyblock %}
+    

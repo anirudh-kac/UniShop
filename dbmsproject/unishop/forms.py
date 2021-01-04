@@ -15,7 +15,7 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ["user","dob"]
 
-class StoreForm(forms.ModelForm):
+class ShopForm(forms.ModelForm):
 
     class Meta:
         model = Shop

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm , UserProfileForm ,StoreForm ,ProductForm
+from .forms import UserForm , UserProfileForm ,ShopForm ,ProductForm
 from .models import Product , Shop , CartItem , Bill
 # Create your views here.
 
@@ -108,9 +108,9 @@ def add_product(request):
 
 def shops(request):
     if request.user.is_authenticated:
-        shops  = Store.objects.filter(pincode = request.user.profile.pincode)
+        shops  = Shop.objects.filter(pincode = request.user.profile.pincode)
     else:
-        shops = Store.objects.all()
+        shops = Shop.objects.all()
 
     
     return render(request,'unishop/shops.html',{
@@ -118,7 +118,7 @@ def shops(request):
         })
 
 def shop(request,id):
-    shop = Store.objects.get(id = id)
+    shop = Shop.objects.get(id = id)
 
     return render(request,"unishop/shop.html",{
         "shop":shop
@@ -134,7 +134,7 @@ def cart(request):
     store_ids = set([item.product.store.id for item in cart_items])
     for store_id in store_ids:
         #find store
-        store = Store.objects.get(id = store_id)
+        store = Shop.objects.get(id = store_id)
         #find all items brought from a store
         items = []
         for cart_item in cart_all:
@@ -183,7 +183,7 @@ def order(request):
             price+= item.quantity * item.product.price
             item.delete()
     
-    shopped_from = Store.objects.get(id = shop_id)
+    shopped_from = Shop.objects.get(id = shop_id)
     bill  = Bill(address = address,user=request.user,total_price=price,deliver=deliver,store=shopped_from)
     bill.save()
 

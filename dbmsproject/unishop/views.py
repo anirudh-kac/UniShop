@@ -8,6 +8,7 @@ from .models import Product , Shop , CartItem , Bill
 def home(request):
     return render(request,'unishop/index.html')
 
+
 def login_user(request):
     if request.method == "GET":
         return render(request,'unishop/login.html')
@@ -167,6 +168,7 @@ def add_to_cart(request,id):
 def order(request):
     price = 0
     address = request.user.profile.address
+    #shop from which ordered
     shop_id = int(request.POST["shop_id"])
     deliver = request.POST.get("deliver")
     if deliver == "on":
@@ -178,6 +180,7 @@ def order(request):
     print(shop_id)
     for item in request.user.cartitem_set.all():
         print(item.product.store.id)
+        #only cart items belonging to that shop
         if item.product.store.id == shop_id:
             print(item)
             price+= item.quantity * item.product.price

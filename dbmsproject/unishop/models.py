@@ -11,10 +11,12 @@ class Shop(models.Model):
     location = models.CharField(max_length=100)
     pincode = models.PositiveIntegerField()
     owner = models.OneToOneField(User,on_delete=models.CASCADE,related_name="shop")
-
+    image_url = models.URLField(null = True)
     def __str__(self):
         return self.name
 
+# request.user.profile 
+# additional information for predefined model
 class UserProfile(models.Model):
     is_employee = models.BooleanField(default=False)
     is_owner = models.BooleanField(default=False)
@@ -34,6 +36,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
+    image_url = models.URLField(null=True)
     shop = models.ForeignKey('Shop',on_delete=models.CASCADE)
 
     def __str__(self):
@@ -43,6 +46,7 @@ class CartItem(models.Model):
     product = models.ForeignKey('Product',on_delete = models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
+    
     def __str__(self):
         return self.user.username
 
@@ -52,9 +56,9 @@ class Bill(models.Model):
     address = models.CharField(max_length=100)
     total_price = models.PositiveIntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="bill")
-    shop = models.ForeignKey('Shop', on_delete=models.Case,related_name="bills")
+    shop = models.ForeignKey('Shop', on_delete=models.CASCADE,related_name="bills")
 
     def __str__(self):
-        return self.user.username
+        return self.user.username + "Bill"
 
 

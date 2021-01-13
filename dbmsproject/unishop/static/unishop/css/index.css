@@ -42,6 +42,12 @@ body{
 
 /* register form */
 
-.register-div , .bg-table{
+.register-div , .bg-table , .bg-form{
     background-color: #ee9595;
+}
+
+.form-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }

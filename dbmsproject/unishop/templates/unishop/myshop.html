@@ -4,51 +4,84 @@
 Your Shop
 {% endblock title %}
 {% block bodyblock %}
-
+<div class="container">
 {% if not user.shop %}
-<h1>You need to create your shop first</h1>
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-10">
+        <h1>You need to create your shop first</h1>
+    </div>
+</div>
 
-<form action="/myshop/" method = "POST">
-    {{shop_form.as_p}}
-    {% csrf_token %}
-    <button type = "submit">Create Shop</button>
-</form>
-{% else %}
-<h1>
-{{user.shop.name}}
-</h1>
-
-<h2>Products</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Brand</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Delete</th>
-    </tr>
-    {% for product in user.shop.product_set.all  %}
-
-    <tr>
-        <td>{{product.id}}</td>
-        <td>{{product.brand}}</td>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.quantity}}</td>
-        <td><a href = "/product/delete/{{product.id}}" >X</a></td>
-    </tr>
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-10 bg-form">
+        <div class="form-warp">
+            <form action="/myshop/" method = "POST" class = "form ">
+                {{shop_form.as_p}}
+                {% csrf_token %}
+                <button type = "submit" class = "btn btn-primary">Create Shop</button>
+            </form>
+        </div>
         
-{% endfor %}
-</table>
+    </div>
+</div>
 
-<h4>Add Product</h4>
+{% else %}
 
-<form action="/product/add/" method = "POST">
-    {{product_form}}
-    {%csrf_token%}
-    <button type = "submit">Add</button>
-</form>
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-10">
+        <h1> {{user.shop.name}} </h1>
+        <h2>Products</h2>
+    </div>
+</div>
+
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-10">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Brand</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+            </tr>
+            {% for product in user.shop.product_set.all  %}
+        
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.brand}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td><a  class ="btn btn-danger" href = "/product/delete/{{product.id}}" >X</a></td>
+            </tr>
+                
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-10">
+        <h4>Add Product</h4>
+        <div class="form-warp bg-form ">
+            <form action="/product/add/" method = "POST" class="form p-5 round">
+                {{product_form.as_p}}
+                {%csrf_token%}
+                <button type = "submit" class= "btn btn-success"> + </button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+
 {% endif %}
+</div>
 {% endblock bodyblock %}
     

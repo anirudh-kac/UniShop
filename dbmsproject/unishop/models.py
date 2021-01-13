@@ -74,7 +74,7 @@ class Bill(models.Model):
     total_price = models.PositiveIntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="bill")
     shop = models.ForeignKey('Shop', on_delete=models.CASCADE,related_name="bills")
-
+    completed = models.BooleanField(default=False)
     def __str__(self):
         return self.user.username + "Bill"
     

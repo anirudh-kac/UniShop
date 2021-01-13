@@ -28,8 +28,20 @@ Your Shop
 {% else %}
 
 <div class="row align-items-center justify-content-center">
-    <div class="col-lg-8 col-md-10 col-sm-10">
-        <h1> {{user.shop.name}} </h1>
+    <div class="col-lg-8 col-md-10 col-sm-10 align-items-center justify-content-center">
+
+        <div class="card mb-3 mt-5" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{user.shop.image_name}}" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{user.shop.name}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
         <h2>Products</h2>
     </div>
 </div>
@@ -66,7 +78,7 @@ Your Shop
 
 
 
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center mb-5">
     <div class="col-lg-8 col-md-10 col-sm-10">
         <h4>Add Product</h4>
         <div class="form-warp bg-form ">

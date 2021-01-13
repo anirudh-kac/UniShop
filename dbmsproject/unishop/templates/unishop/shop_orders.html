@@ -3,9 +3,19 @@
 Shop Orders
 {% endblock title %}
 {% block bodyblock %}
-<h1>Here are the orders</h1>
+{% if not orders %}
+<h2>Sorry you don't have any orders right now
+{% else %}
 
-{% for order in orders %}
-{{order.user.username }}
+<ul>
+
+{% for order in orders  %}
+<li>
+
+{{order.user.username}} || {{order.address}} || {{order.total_price}} || {{order.deliver}}
+</li>
 {% endfor %}
+<ul>
+{% endif %}
+
 {% endblock bodyblock %}

@@ -227,3 +227,14 @@ def orders(request):
     return render(request,"unishop/orders.html",{
         "orders":orders
     })
+
+
+@login_required
+def complete_order(request,id):
+    if not request.user.profile.is_owner:
+        return redirect('/')
+
+    order = Bill.objects.get(pk = id);
+    order.completed = True
+    order.save()
+    return redirect('/shoporders')

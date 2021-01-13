@@ -27,9 +27,7 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">Logout</a>
-      </li>
+      
           {% if  user.profile.is_owner %}
           <li class="nav-item">
             <a class="nav-link" href="/myshop">My Shop</a>
@@ -50,6 +48,9 @@
             <a class="nav-link" href="/orders">Orders</a>
           </li>
           {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
       {% else %}
 
      
@@ -62,13 +63,13 @@
 
       {% endif %}
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+      </li> -->
 
       {% if user.is_authenticated %}
       <li class="nav-item">
-        <p class = "nav-link red-color" style = "color:red"> Hello {{user.username}} </p>
+        <p class = "nav-link red-color" style = "color:#74c7b8"> Hello {{user.username}} </p>
       </li>
       {% endif %}
       

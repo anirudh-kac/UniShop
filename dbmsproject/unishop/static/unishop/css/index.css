@@ -3,7 +3,7 @@
 
 /* index page */
 body{
-    background-image:linear-gradient(rgba(243, 232, 232, 0.877),rgba(187, 187, 204, 0.884)),url('/static/unishop/images/bg2.jpg');
+    background-image:linear-gradient(rgba(179, 67, 67, 0.877),rgba(127, 59, 172, 0.678)),url('/static/unishop/images/bg2.jpg');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;

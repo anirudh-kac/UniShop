@@ -4,35 +4,62 @@
 Cart
 {% endblock title %}
 {% block bodyblock %}
+<div class = "container">
+    <div class = "row align-items-center justify-content-center">
+
+    
+
 
     {% if not cart_items %}
-
+    <div class = "col-sm-10 col-md-6 col-lg-5 mt-5">
         <h2> No items in your cart </h2>
+    </div>
+        
 
     {% else %}
 
-        <ul>
-            {% for cart_item in cart_items  %}
-            <li>
-            <h3>{{ cart_item.store }}</h3>
-                <ul>
-                    {% for item  in cart_item.items %}
-                    <p>{{item.product.name}} {{item.quantity}} </p>
-                    {% endfor %}
-                </ul>
+    <br>
 
-                <form method = "POST" action="/order/">
-                    {% csrf_token %}
-                    <label for="deliver">Deliver</label>
-                    <input  name = "deliver" id = "deliver" type="checkbox">
-                    <input type = "hidden" name = "shop_id" value = "{{cart_item.shop.id}}">
-                    <button type = "submit" >Order</button>
-                </form>
-            </li>
+    <div class = "col-sm-10 col-md-6 col-lg-5 mt-5">
+        <h2> Here are all you cart items grouped by shops</h2>
+    </div>
+
+</div>
+
+    <br>
+    <div class = "row align-items-center justify-content-center">
+    <div class = "col-sm-10 col-md-6 col-lg-5">
+            {% for cart_item in cart_items  %}
+
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ cart_item.shop.name }}</h5>
+                          {% for item  in cart_item.items %}
+                    <p class = "card-text">{{item.product.name}} {{item.quantity}} </p>
+                    {% endfor %}
+
+                    <p class="card-text">Price : {{ cart_item.total }}</p>
+                          
+                          <form method = "POST" action="/order/">
+                            {% csrf_token %}
+                            <label for="deliver">Deliver</label>
+                            <input  name = "deliver" id = "deliver" type="checkbox">
+                            <input type = "hidden" name = "shop_id" value = "{{cart_item.shop.id}}">
+                            <button class = "btn btn-primary" type = "submit" >Order</button>
+                        </form>
+                        </div>
+                      </div>
+
+                
             {% endfor %}
-        </ul>
+
+    </div>
+
        
         
     {% endif %}
+
+</div>
+</div>
 {% endblock bodyblock %}
     

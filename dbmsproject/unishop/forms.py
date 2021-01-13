@@ -19,11 +19,11 @@ class ShopForm(forms.ModelForm):
 
     class Meta:
         model = Shop
-        exclude = ["owner","image_url"]
+        exclude = ["owner"]
 
 
 class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ['brand','name','price','quantity']
+        fields = ['brand','name','price','quantity','image_name']

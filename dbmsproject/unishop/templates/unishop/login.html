@@ -6,13 +6,29 @@ Login
 {% block bodyblock %}
 
 {% if message %}
-<p>{{message}}</p>
+<div class="alert alert-warning" role="alert">
+    {{message}}
+  </div>
 {% endif %}
-<form action="/login/" method="POST">
-        <input name = "username" type="text" placeholder="username">
-        <input name  = "password" type="password">
-        <button type="submit">Login</button>
-        {% csrf_token %}
-    </form>
+
+<div class = "container">
+    <div class = "row align-items-center justify-content-center">
+        <div class = "col-lg-5 col-md-6 col-md-10">
+            <h2 class = "mt-2">Login</h2>
+<form action = "/login/" method = "POST">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name = "username" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name = "password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    {% csrf_token %}
+  </form>
+</div>
+</div>
+</div>
 {% endblock bodyblock %}
     

@@ -4,11 +4,21 @@
 Register
 {% endblock title %}
 {% block bodyblock %}
-<form action="/register/" method="POST">
-        {{ user_form.as_p}}
-        {{user_profile_form.as_p}}
-        <button type="submit">Register</button>
-        {% csrf_token %}
-</form>
+<div class = "container">
+        
+        <div class =  "row align-items-center justify-content-center">
+                
+                <div class = "col-lg-5 col-md-6 col-sm-10 register-div mt-5 p-3 rounded">
+                        <h2 class = "mt-2">Register</h2>
+                        <form action="/register/" method="POST">
+                                {{ user_form.as_p}}
+                                {{user_profile_form.as_p}}
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                {% csrf_token %}
+                        </form>
+                </div>
+        </div>
+</div>
+
 {% endblock bodyblock %}
     

@@ -40,6 +40,11 @@ body{
     color : white;
 }
 
+.card-img{
+    width:100%;
+    height:auto;
+}
+
 /* register form */
 
 .register-div , .bg-table , .bg-form{

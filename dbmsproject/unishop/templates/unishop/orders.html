@@ -1,0 +1,21 @@
+{% extends 'unishop/base.html' %}
+{% block title %}
+Orders
+{% endblock title %}
+{% block bodyblock %}
+{% if not orders %}
+<h2>Sorry you don't have any orders right now
+{% else %}
+
+<ul>
+
+{% for order in orders  %}
+<li>
+
+{{order.address}} || {{order.total_price}} || {{order.deliver}}
+</li>
+{% endfor %}
+<ul>
+{% endif %}
+
+{% endblock bodyblock %}

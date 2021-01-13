@@ -202,3 +202,12 @@ def shop_orders(request):
     return render(request,'unishop/shop_orders.html',{
         "orders" : orders
     })
+
+##user orders
+@login_required
+def orders(request):
+
+    orders = request.user.bill.all()
+    return render(request,"unishop/orders.html",{
+        "orders":orders
+    })

@@ -50,6 +50,8 @@ class CartItem(models.Model):
     def __str__(self):
         return self.user.username
 
+
+##bill ~ orders
 class Bill(models.Model):
     
     deliver = models.BooleanField(default=False)

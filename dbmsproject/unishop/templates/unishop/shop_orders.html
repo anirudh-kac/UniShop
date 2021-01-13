@@ -3,19 +3,62 @@
 Shop Orders
 {% endblock title %}
 {% block bodyblock %}
+
+<div class = "container">
+
+
+
 {% if not orders %}
-<h2>Sorry you don't have any orders right now
+<div class = "row align-items-center justify-content-center">
+    <div class = "col-lg-7 col-md-9 col-sm-10">
+        <h2 class = "mt-5">Sorry you don't have any orders right now</h2>
+    </div>
+</div>
+
 {% else %}
 
-<ul>
 
-{% for order in orders  %}
-<li>
+<div class = "row align-items-center justify-content-center">
+    <div class = "col-lg-7 col-md-9 col-sm-10">
+        <h2 class = "mt-5">All Orders</h2>
+    </div>
+</div>
 
-{{order.user.username}} || {{order.address}} || {{order.total_price}} || {{order.deliver}}
-</li>
-{% endfor %}
-<ul>
+<div class = "row align-items-center justify-content-center">
+    <div class = "col-lg-7 col-md-9 col-sm-10">
+        <table>
+            <thead>
+                <th>Order ID</th>
+                <th>Username</th>
+                <th>Phone Number</th>
+                <th>Total Price</th>
+                <th>Delivery ? </th>
+                <th>Complete/Completed</th>
+
+            </thead>
+
+            <tbody>
+                {% for order in orders  %}
+                <tr>
+                
+                    <td>{{order.id}}</td>
+                    <td>{{order.user.username}}</td>
+                    <td>{{order.user.profile.phone_number}}</td>
+                    <td>{{order.total_price}}</td>
+                    <td>{% if order.deliver %} <span>Yes</span> {%else%} <span>No</span> {% endif %}</td>
+                    <td>{% if order.completed %} <span class = "btn btn-success">Done</span> {%else%} <a class = "btn btn-primary" href="/orders/complete/{{order.id}}">Complete Order</a> {% endif %}</td>
+                
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+            
+            <ul>
+    </div>
+</div>
+
 {% endif %}
 
+</div>
 {% endblock bodyblock %}

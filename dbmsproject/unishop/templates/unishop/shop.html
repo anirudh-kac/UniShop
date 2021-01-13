@@ -5,37 +5,32 @@
 {% endblock title %}
 {% block bodyblock %}
 
-<h1> {{shop.name}} </h1>
+<div class  = "container">
 
-{% if not shop.product_set.all %}
-<h3>Sorry this shop doesnt have any items available</h3>
-{% else %}
-
-<h2>Products</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Brand</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Add to cart</th>
-    </tr>
-    {% for product in shop.product_set.all  %}
-
-    <tr>
-        <td>{{product.id}}</td>
-        <td>{{product.brand}}</td>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.quantity}}</td>
-        <td><a href = "/product/addtocart/{{product.id}}" >+</a></td>
-    </tr>
-        
-{% endfor %}
-</table>
-
-{% endif %}
+    <h1 class = "mt-5 align-self-center">{{shop.name}}</h1>
+    {% if not shop.product_set.all %}
+    
+        <h2 class = "mt-5"> No products available</h2>
+    
+    {% else %}
+    
+        <div class="row align-items-center justify-content-center">
+            {% for product in shop.product_set.all  %}
+            <div class = "col-md-4 col-lg-3 col-sm-12 mt-5">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{product.image_name}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text">{{product.brand }} {{ product.name}}</p>
+                          <p class="card-text">Rs. {{product.price}}</p>
+                        </div>
+                        <a href = "/product/addtocart/{{product.id}}" >Add to cart +</a>
+                      </div>
+                
+            </div>  
+            {% endfor %}
+        </div>
+    {% endif %}
+    </div>
 
 {% endblock bodyblock %}
     

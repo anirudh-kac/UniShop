@@ -1,0 +1,11 @@
+{% extends 'unishop/base.html' %}
+{% block title %}
+Shop Orders
+{% endblock title %}
+{% block bodyblock %}
+<h1>Here are the orders</h1>
+
+{% for order in orders %}
+{{order.user.username }}
+{% endfor %}
+{% endblock bodyblock %}

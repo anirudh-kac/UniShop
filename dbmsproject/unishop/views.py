@@ -169,7 +169,7 @@ def order(request):
     price = 0
     address = request.user.profile.address
     #shop from which ordered
-    shop_id = int(request.POST["shop_id"])
+    shop_id = int( request.POST.get("shop_id"))
     deliver = request.POST.get("deliver")
     if deliver == "on":
         deliver=True
@@ -197,5 +197,8 @@ def shop_orders(request):
     if not request.user.profile.is_owner:
         return redirect('/')
     
-    orders = request.user.shop.bills.objects.all()
-    print(orders)
+    orders = request.user.shop.bills.all()
+
+    return render(request,'unishop/shop_orders.html',{
+        "orders" : orders
+    })

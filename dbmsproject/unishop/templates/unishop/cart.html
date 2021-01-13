@@ -25,7 +25,7 @@ Cart
                     {% csrf_token %}
                     <label for="deliver">Deliver</label>
                     <input  name = "deliver" id = "deliver" type="checkbox">
-                    <input type = "hidden" name = "shop_id" value = "{{cart_item.store.id}}">
+                    <input type = "hidden" name = "shop_id" value = "{{cart_item.shop.id}}">
                     <button type = "submit" >Order</button>
                 </form>
             </li>

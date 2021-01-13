@@ -15,6 +15,9 @@ class Shop(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = "Shop"
+
 # request.user.profile 
 # additional information for predefined model
 class UserProfile(models.Model):
@@ -29,6 +32,10 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+    class Meta:
+        db_table = "UserProfile"
+
+
 
 class Product(models.Model):
     #id added automatically
@@ -42,6 +49,10 @@ class Product(models.Model):
     def __str__(self):
         return self.brand + self.name
 
+    class Meta:
+        db_table = "Product"
+
+
 class CartItem(models.Model):
     product = models.ForeignKey('Product',on_delete = models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -49,6 +60,10 @@ class CartItem(models.Model):
     
     def __str__(self):
         return self.user.username
+
+    class Meta:
+        db_table = "CartItem"
+
 
 
 ##bill ~ orders
@@ -62,5 +77,12 @@ class Bill(models.Model):
 
     def __str__(self):
         return self.user.username + "Bill"
+    
+    class Meta:
+        db_table = "Bill"
+    
+
+    
+
 
 

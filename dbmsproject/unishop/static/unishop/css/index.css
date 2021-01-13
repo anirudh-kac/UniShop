@@ -3,7 +3,7 @@
 
 /* index page */
 body{
-    background-image:linear-gradient(rgba(243, 232, 232, 0.877),rgba(187, 187, 204, 0.884)),url('/static/unishop/images/bg.jpg');
+    background-image:linear-gradient(rgba(243, 232, 232, 0.877),rgba(187, 187, 204, 0.884)),url('/static/unishop/images/bg2.jpg');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -32,12 +32,13 @@ body{
     border-radius: 20%;
     padding : 10px;
     color:white;
+    text-decoration: none;
 }
 
 .style-button:hover{
     border : 2px solid white;
     background-color : #ffcda3;
-    color : white;
+    color : black;
 }
 
 .card-img{

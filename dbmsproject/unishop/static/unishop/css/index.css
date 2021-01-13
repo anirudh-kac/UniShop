@@ -42,6 +42,6 @@ body{
 
 /* register form */
 
-.register-div{
+.register-div , .bg-table{
     background-color: #ee9595;
 }

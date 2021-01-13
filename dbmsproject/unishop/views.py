@@ -201,6 +201,11 @@ def order(request):
     bill  = Bill(address = address,user=request.user,total_price=price,deliver=deliver,shop=shopped_from)
     bill.save()
 
+    return render(request,"unishop/ordered.html" , {
+        "order_id" : bill.id,
+        "total" : bill.total_price
+    })
+
     return HttpResponse(f"Order Placed! \n Total price {bill.total_price}")
 
 @login_required

@@ -1,0 +1,19 @@
+{% extends 'unishop/base.html' %}
+{% block title %}
+Ordered
+{% endblock title %}
+{% block bodyblock %}
+<div class="container">
+    <div class = "row align-self-center justify-content-center mt-5 pd-5">
+        <div class="card mb-3">
+            <img src="/static/unishop/images/thankyou.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Your order has been placed</h5>
+              <p class="card-text">Order ID : {{order_id}}</p>
+              <p class="class-text">Total Amount : {{total }} </p>
+            </div>
+          </div>
+          
+    </div>
+</div>
+{% endblock bodyblock %}

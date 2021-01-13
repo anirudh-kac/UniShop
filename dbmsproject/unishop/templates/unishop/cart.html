@@ -35,10 +35,10 @@ Cart
                         <div class="card-body">
                           <h5 class="card-title">{{ cart_item.shop.name }}</h5>
                           {% for item  in cart_item.items %}
-                    <p class = "card-text">{{item.product.name}} {{item.quantity}} </p>
+                    <p class = "card-text">{{item.product.name}}  X {{item.quantity}} </p>
                     {% endfor %}
 
-                    <p class="card-text">Price : {{ cart_item.total }}</p>
+                    
                           
                           <form method = "POST" action="/order/">
                             {% csrf_token %}

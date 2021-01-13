@@ -143,8 +143,15 @@ def cart(request):
                 items.append(cart_item)
         # print(shop)
         # print(items)
-        cart_grouped.append({"shop" : shop,"items" : items})
+
+
+# item -> product 
+
+        total = sum (item.product.price for item in items)
+        cart_grouped.append({"shop" : shop,"items" : items , "total" : total})
     # print(cart_grouped)
+
+    # cart items [ {shop , [items ... ] , total} , ...]
     return render(request,'unishop/cart.html',{
         "cart_items" : cart_grouped
     })

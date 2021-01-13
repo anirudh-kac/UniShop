@@ -5,20 +5,29 @@ Shops
 {% endblock title %}
 {% block bodyblock %}
 
+
+<div class  = "container">
 {% if not shops %}
 
     <h2> Sorry there are no shops in your area </h2>
 
 {% else %}
 
-    <ul>
+    <div class="row align-items-center justify-content-center">
         {% for shop in shops  %}
-            <li>
-            {{shop.name}}   
-            <a href = "/shops/{{shop.id}}" >Visit</a>
-            </li>
+        <div class = "col-md-4 col-lg-3 col-sm-12 mt-5">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{shop.image_name}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">{{shop.name}}</p>
+                    </div>
+                    <a href = "/shops/{{shop.id}}" >Visit</a>
+                  </div>
+            
+        </div>  
         {% endfor %}
-    <ul>
+    </div>
 {% endif %}
+</div>
 {% endblock bodyblock %}
     

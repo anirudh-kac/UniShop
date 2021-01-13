@@ -11,7 +11,7 @@ class Shop(models.Model):
     location = models.CharField(max_length=100)
     pincode = models.PositiveIntegerField()
     owner = models.OneToOneField(User,on_delete=models.CASCADE,related_name="shop")
-    image_url = models.URLField(null = True)
+    image_name = models.TextField(null = True)
     def __str__(self):
         return self.name
 
@@ -43,7 +43,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField()
-    image_url = models.URLField(null=True)
+    image_name = models.TextField(null=True)
     shop = models.ForeignKey('Shop',on_delete=models.CASCADE)
 
     def __str__(self):

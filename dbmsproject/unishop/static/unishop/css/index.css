@@ -1,6 +1,42 @@
+/* https://colorhunt.co/palette/225709 */
+
+
+/* index page */
 body{
     background-image:linear-gradient(rgba(243, 232, 232, 0.877),rgba(187, 187, 204, 0.884)),url('/static/unishop/images/bg.jpg');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+    height:90vh;
 }
+
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.hero h1{
+    font-size: 500%;
+}
+
+.hero h2{
+    font-size: 400;
+}
+
+.style-button{
+    margin:20px;
+    border : 2px solid black;
+    border-radius: 20%;
+    padding : 10px;
+    color:white;
+}
+
+.style-button:hover{
+    border : 2px solid white;
+    background-color : #ffcda3;
+    color : white;
+}
+

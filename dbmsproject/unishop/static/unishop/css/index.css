@@ -1,5 +1,6 @@
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+body{
+    background-image:linear-gradient(rgba(243, 232, 232, 0.877),rgba(187, 187, 204, 0.884)),url('/static/unishop/images/bg.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
 }

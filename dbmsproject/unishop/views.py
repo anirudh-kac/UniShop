@@ -191,6 +191,10 @@ def order(request):
         if item.product.shop.id == shop_id:
             print(item)
             price+= item.quantity * item.product.price
+
+            #update product quantity
+            item.product.quantity = item.product.quantity - item.quantity
+            item.product.save()
             item.delete()
     
     shopped_from = Shop.objects.get(id = shop_id)

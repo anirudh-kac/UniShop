@@ -44,7 +44,7 @@ Your Shop
               </div>
             </div>
           </div>
-        <h2>Products</h2>
+        <h2 class = "mt-5 mb-3">Products</h2>
     </div>
 </div>
 
@@ -82,12 +82,12 @@ Your Shop
 
 <div class="row align-items-center justify-content-center mb-5">
     <div class="col-lg-8 col-md-10 col-sm-10">
-        <h4>Add Product</h4>
+        <h4 class = "mt-5 mb-3">Add Product</h4>
         <div class="form-warp bg-form ">
             <form action="/product/add/" method = "POST" class="form p-5 round">
                 {{product_form.as_p}}
                 {%csrf_token%}
-                <button type = "submit" class= "btn btn-success"> + </button>
+                <button type = "submit" class= "btn btn-success"> Add  + </button>
             </form>
         </div>
         

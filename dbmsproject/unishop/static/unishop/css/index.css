@@ -3,7 +3,7 @@
 
 /* index page */
 body{
-    background-image:linear-gradient(rgba(179, 67, 67, 0.877),rgba(127, 59, 172, 0.678)),url('/static/unishop/images/bg2.jpg');
+    background-image:linear-gradient(rgba(118, 177, 152, 0.74),rgba(142, 103, 168, 0.678)),url('/static/unishop/images/bg2.jpg');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -31,7 +31,7 @@ body{
     border : 2px solid black;
     border-radius: 20%;
     padding : 10px;
-    color:white;
+    color:black;
     text-decoration: none;
 }
 
@@ -56,4 +56,25 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+table{
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+th , td {
+    padding-right: 20px;
+    padding-top: 20px;
+    font-family: cursive;
+}
+
+th{
+    font-size: 130%;
+}
+
+td{
+    font-size: 120%;
 }

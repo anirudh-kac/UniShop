@@ -19,16 +19,18 @@ Orders
             <table>
                 <thead>
                     <th>Order ID</th>
+                    <th>Shop Name</th>
                     <th>Cost</th>
                     <th>Delivery ? </th>
                     <th>Address </th>
-                    <th>Complete</th>
+                    <th>Status</th>
                 </thead>
             
             <tbody>
                 {% for order in orders  %}
                 <tr>
                 <td>{{order.id}} </td>
+                <td>{{order.shop.name}}</td>
                 <td>{{order.total_price}}</td>
                 <td>{{order.deliver}}</td>
                 <td>{{order.address}}</td>

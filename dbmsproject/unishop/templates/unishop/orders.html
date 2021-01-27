@@ -31,7 +31,7 @@ Orders
                 <tr>
                 <td>{{order.id}} </td>
                 <td>{{order.shop.name}}</td>
-                <td>{{order.total_price}}</td>
+                <td>Rs. {{order.total_price}}</td>
                 <td>{{order.deliver}}</td>
                 <td>{{order.address}}</td>
                 <td>{% if order.completed %} <span class = "btn btn-success">Done</span> {%else%}<span class = "btn btn-warning">Pending</span> {%endif%}</td>
